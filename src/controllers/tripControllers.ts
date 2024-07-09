@@ -3,12 +3,13 @@ import { postTripType } from '../schemas/tripSchemas';
 import HttpStatusCodes from '../utils/HttpStatusCodes';
 import dayjs from 'dayjs';
 import BadRequest from '../utils/BadRequest';
+import { saveTrip } from '../services/tripServices';
 
 export async function createTrip(
   request: FastifyRequest<{ Body: postTripType }>,
   reply: FastifyReply
 ) {
-  const { destination, startsAt, endsAt } = request.body;
+  const { startsAt, endsAt } = request.body;
 
   // Checking dates based on business rules
   // Check if the begin of trip is in past
@@ -29,7 +30,6 @@ export async function createTrip(
     });
   }
 
-  return reply
-    .status(HttpStatusCodes.CREATED)
-    .send({ id: '3fa85f64-5717-4562-b3fc-2c963f66afa6' });
+  const newTrip = await saveTrip(request.body);
+  return reply.status(HttpStatusCodes.CREATED).send({ id: newTrip.id });
 }
