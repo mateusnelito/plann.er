@@ -15,4 +15,4 @@ export const complexBadRequestSchema = simpleBadRequestSchema.or(
   })
 );
 
-export type badRequestType = z.infer<typeof badRequestSchema>;
+export type badRequestType = z.infer<typeof complexBadRequestSchema>;
