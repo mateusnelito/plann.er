@@ -3,6 +3,7 @@ import fastify from 'fastify';
 import HttpStatusCodes from './utils/HttpStatusCodes';
 import zodTypeProvider from './plugins/zod';
 import swaggerDocs from './plugins/swagger';
+import errorHandler from './plugins/errorHandler';
 import routes from './routes';
 
 // Instantiate the server
@@ -16,6 +17,7 @@ server.register(fastifyCors, {
 // Register the plugins
 server.register(zodTypeProvider);
 server.register(swaggerDocs);
+server.register(errorHandler);
 
 // Register all the routes to API
 server.register(routes);
