@@ -25,3 +25,16 @@ const tripSchema = z.object({
     required_error: 'data de fim é obrigatória.',
   }),
 });
+
+export const POST_TRIP_SCHEMA = {
+  summary: 'Agenda uma nova viagem',
+  tags: ['trips'],
+  body: tripSchema.omit({ id: true }),
+  response: {
+    201: z.object({
+      id: z.string().uuid(),
+    }),
+  },
+};
+
+export type postTripType = z.infer<typeof POST_TRIP_SCHEMA.body>;
