@@ -12,7 +12,7 @@ async function errorHandler(server: FastifyInstance) {
     if (err instanceof ZodError) {
       return reply.status(HttpStatusCodes.BAD_REQUEST).send({
         statusCode: HttpStatusCodes.BAD_REQUEST,
-        message: 'Erro durante a validação da request',
+        message: 'Dados inválidos',
         errors: formatZodErrors(err), // Chama a função para formatar os erros
       });
     }
