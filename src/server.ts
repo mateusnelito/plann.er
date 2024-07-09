@@ -18,7 +18,7 @@ server.register(zodTypeProvider);
 server.register(swaggerDocs);
 
 // Register all the routes to API
-// ...
+server.register(routes);
 
 // Define the 404 route
 server.setNotFoundHandler((request, reply) => {
