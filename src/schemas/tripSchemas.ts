@@ -19,6 +19,7 @@ const tripSchema = z.object(
       .trim()
       .min(3, { message: 'destino deve possuir mais de 3 caracteres.' })
       .max(50, { message: 'destino deve possuir no máximo 50 caracteres.' }),
+    // FIXME: Add customized message for coerce invalid date
     startsAt: z.coerce.date({
       invalid_type_error: 'Tipo inválido.',
       required_error: 'data de inicio é obrigatória.',
