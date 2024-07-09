@@ -1,6 +1,8 @@
 import fastifyCors from '@fastify/cors';
 import fastify from 'fastify';
 import HttpStatusCodes from './utils/HttpStatusCodes';
+import zodTypeProvider from './plugins/zod';
+import routes from './routes';
 
 // Instantiate the server
 const server = fastify();
@@ -11,7 +13,7 @@ server.register(fastifyCors, {
 });
 
 // Register the plugins
-// ...
+server.register(zodTypeProvider);
 
 // Register all the routes to API
 // ...
