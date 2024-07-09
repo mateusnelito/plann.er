@@ -5,8 +5,7 @@ node_modules/
 dist/
 
 # Prisma generated files
-# prisma/schema.prisma
-# prisma/.prisma/
+prisma/.prisma/
 
 # TypeScript build output
 *.tsbuildinfo
@@ -31,3 +30,7 @@ yarn-error.log*
 # Dependency directories
 .pnpm/
 .npm/
+
+# SQLite Database
+*.db
+*db*
